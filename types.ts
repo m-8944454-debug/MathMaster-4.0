@@ -1,11 +1,11 @@
 
 export type Difficulty = 1 | 2 | 3;
 
-export type StudyGroupType = 'Alpha Integrals' | 'Vector Vanguards' | 'Newton\'s Nomads' | 'None';
+export type StudyGroupType = 'Alpha Integrals' | 'Vector Vanguards' | 'Newton\'s Nomads' | 'Tiada';
 
 export interface StudyGroup {
   id: string;
-  name: StudyGroupType;
+  name: string;
   icon: string;
   code: string;
   color: string;
@@ -19,13 +19,13 @@ export interface Achievement {
   criteria: string;
   practicalImpact: string;
   goalValue?: number;
-  statKey?: string; // 用于匹配 problemStats 中的键
+  statKey?: string; // Used to match problemStats keys
 }
 
 export interface Profile {
   name: string;
   description: string;
-  group: StudyGroupType;
+  group: string;
   avatar: string;
   correctAnswers: number;
   totalAttempts: number;
@@ -39,6 +39,7 @@ export interface Profile {
   topicHistory: string[]; 
   problemStats: Record<string, number>; // Records count of correct Topic_Difficulty
   topicAttempts: Record<string, number>; // Records total attempts per Topic
+  solveHistory: MathProblem[]; // Records recently solved problems
 }
 
 export interface MathProblem {
@@ -76,7 +77,7 @@ export interface DiscussionComment {
 
 export interface DiscussionPost {
   id: string;
-  groupName: StudyGroupType;
+  groupName: string;
   authorName: string;
   authorAvatar: string;
   problem: MathProblem;
@@ -102,13 +103,13 @@ export const STUDY_GROUPS: StudyGroup[] = [
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'genesis', name: 'Math Genesis', description: 'Solve your first problem successfully.', icon: '🌱', criteria: '1 correct answer', practicalImpact: 'You have begun your journey towards mathematical mastery.' },
-  { id: 'vector_apprentice', name: 'Vector Apprentice', description: 'Master the basics of spatial vectors.', icon: '📐', criteria: 'Solve 50 Basic Vector problems', practicalImpact: 'Your understanding of spatial coordinates is now architect-grade.', goalValue: 50, statKey: 'Vector_1' },
-  { id: 'polymath', name: 'Syllabus Polymath', description: 'Solve a problem from every major SM025 topic.', icon: '⚛️', criteria: 'Solve Integration, Vector, and Numerical problems', practicalImpact: 'Your knowledge covers the full spectrum of the advanced syllabus.' },
-  { id: 'legend', name: 'KMM Legend', description: 'Reach 100 correct solutions.', icon: '🏆', criteria: '100 correct answers', practicalImpact: 'Your expertise is officially recognized across the campus.' },
-  { id: 'precision', name: 'Precision Architect', description: 'Maintain over 90% accuracy.', icon: '🎯', criteria: '90% mastery (min 20 attempts)', practicalImpact: 'You demonstrate an elite level of accuracy and focus.' },
-  { id: 'devotion', name: 'Daily Devotion', description: 'Hit your daily goal 5 times.', icon: '🔥', criteria: '5 daily goals completed', practicalImpact: 'Consistency is the foundation of true academic success.' },
-  { id: 'advanced', name: 'Master Solver', description: 'Solve an Advanced (3-star) problem.', icon: '💠', criteria: 'Solve a difficulty 3 problem', practicalImpact: 'You can handle the most complex spatial and numerical challenges.' }
+  { id: 'genesis', name: 'Permulaan Matematik', description: 'Selesaikan soalan pertama dengan betul.', icon: '🌱', criteria: '1 jawapan betul', practicalImpact: 'Anda telah memulakan perjalanan ke arah penguasaan matematik.' },
+  { id: 'vector_apprentice', name: 'Perantis Vektor', description: 'Kuasai asas vektor ruang.', icon: '📐', criteria: 'Selesaikan 50 soalan Vektor Asas', practicalImpact: 'Pemahaman anda tentang koordinat spatial kini setaraf arkitek.', goalValue: 50, statKey: 'Vector_1' },
+  { id: 'polymath', name: 'Polimat Silibus', description: 'Selesaikan soalan daripada setiap topik utama SM025.', icon: '⚛️', criteria: 'Selesaikan soalan Integrasi, Vektor, dan Penyelesaian Numerikal', practicalImpact: 'Pengetahuan anda merangkumi spektrum penuh silibus lanjutan.' },
+  { id: 'legend', name: 'Legenda KMM', description: 'Capai 100 jawapan betul.', icon: '🏆', criteria: '100 jawapan betul', practicalImpact: 'Kepakaran anda diiktiraf secara rasmi di seluruh kampus.' },
+  { id: 'precision', name: 'Arkitek Ketepatan', description: 'Kekalkan ketepatan melebihi 90%.', icon: '🎯', criteria: '90% penguasaan (min 20 percubaan)', practicalImpact: 'Anda menunjukkan tahap ketepatan dan fokus yang elit.' },
+  { id: 'devotion', name: 'Dedikasi Harian', description: 'Capai matlamat harian sebanyak 5 kali.', icon: '🔥', criteria: '5 matlamat harian disiapkan', practicalImpact: 'Konsistensi adalah asas kejayaan akademik yang sebenar.' },
+  { id: 'advanced', name: 'Pakar Penyelesai', description: 'Selesaikan soalan Lanjutan (3-bintang).', icon: '💠', criteria: 'Selesaikan soalan tahap 3', practicalImpact: 'Anda mampu menangani cabaran spatial dan numerikal yang paling kompleks.' }
 ];
 
 export const AVATARS = ['👨‍🏫', '👩‍🔬', '🧙‍♂️', '🤖', '🦊', '🚀', '🧠', '🎓'];

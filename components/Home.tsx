@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { GameState, Profile } from '../types';
 
@@ -22,7 +23,7 @@ const Home: React.FC<HomeProps> = ({ setGameState, userProfile, mistakeCount }) 
   const leaderboard = [
     ...MOCK_RANKING,
     { 
-      name: userProfile.name || 'You', 
+      name: userProfile.name || 'Anda', 
       group: userProfile.group, 
       correct: userProfile.correctAnswers, 
       total: userProfile.totalAttempts 
@@ -46,29 +47,29 @@ const Home: React.FC<HomeProps> = ({ setGameState, userProfile, mistakeCount }) 
     <div className="flex flex-col items-center py-4 md:py-6">
       <div className="text-center mb-8 md:mb-12 px-2">
         <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-          Master <span className="text-red-600">SM025</span> <br />
-          At KMM Campus
+          Kuasai <span className="text-red-600">SM025</span> <br />
+          Di Kolej Matrikulasi
         </h1>
         <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto">
-          Every practice brings you closer to your goals. Join your fellow KMM candidates and rise through the ranks.
+          Setiap latihan membawa anda lebih dekat kepada gred A. Sertai rakan seperjuangan KMM dan naikkan kedudukan anda.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 w-full">
         <div className="lg:col-span-1 space-y-6">
           <div className="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-gray-100 text-center">
-            <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">My KMM Profile</h3>
+            <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Profil KMM Saya</h3>
             <div className="text-3xl md:text-4xl font-black text-red-600 mb-1">{userMastery}%</div>
-            <p className="text-sm text-gray-500 font-medium">Mastery Rate</p>
+            <p className="text-sm text-gray-500 font-medium">Kadar Penguasaan</p>
             <div className="mt-6 flex justify-around text-center border-t pt-6 gap-2">
               <div className="flex-1">
                 <div className="font-bold text-gray-800 text-sm md:text-base">{userProfile.correctAnswers}</div>
-                <div className="text-[9px] uppercase text-gray-400 font-bold">Solved</div>
+                <div className="text-[9px] uppercase text-gray-400 font-bold">Selesai</div>
               </div>
               <div className="w-px h-8 bg-gray-100"></div>
               <div className="flex-1">
                 <div className="font-bold text-gray-800 text-sm md:text-base truncate px-1" title={userProfile.group}>{userProfile.group}</div>
-                <div className="text-[9px] uppercase text-gray-400 font-bold">Group</div>
+                <div className="text-[9px] uppercase text-gray-400 font-bold">Kumpulan</div>
               </div>
             </div>
           </div>
@@ -80,10 +81,10 @@ const Home: React.FC<HomeProps> = ({ setGameState, userProfile, mistakeCount }) 
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-2xl flex items-center justify-center text-xl md:text-2xl shadow-sm border border-red-100 group-hover:scale-110 transition-transform">📓</div>
-                <span className="bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">{mistakeCount} Critical Issues</span>
+                <span className="bg-red-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">{mistakeCount} Isu Kritikal</span>
               </div>
-              <h4 className="font-black text-gray-900 uppercase tracking-tight text-base md:text-lg mb-1">Clear Your Errors</h4>
-              <p className="text-xs text-red-600 font-bold">Resolve pending mistakes to gain bonus points.</p>
+              <h4 className="font-black text-gray-900 uppercase tracking-tight text-base md:text-lg mb-1">Baiki Kesalahan</h4>
+              <p className="text-xs text-red-600 font-bold">Selesaikan kesilapan lama untuk mata bonus.</p>
             </div>
           )}
 
@@ -91,7 +92,7 @@ const Home: React.FC<HomeProps> = ({ setGameState, userProfile, mistakeCount }) 
             onClick={() => setGameState(GameState.PRACTICE)}
             className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-5 rounded-[2rem] shadow-lg transition-all transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3"
           >
-            <span className="uppercase tracking-widest text-sm">Start Practice</span>
+            <span className="uppercase tracking-widest text-sm">Mula Latihan</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
@@ -101,17 +102,17 @@ const Home: React.FC<HomeProps> = ({ setGameState, userProfile, mistakeCount }) 
         <div className="lg:col-span-2">
           <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
             <div className="px-6 py-5 border-b border-gray-50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-red-50/30">
-              <h3 className="font-bold text-gray-900">KMM Campus Standing</h3>
+              <h3 className="font-bold text-gray-900">Kedudukan Kampus KMM</h3>
               <span className="text-[10px] font-bold text-red-600 bg-white px-2.5 py-1 rounded-lg shadow-sm border border-red-100 uppercase">Live Melaka</span>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead className="bg-gray-50/50 text-[10px] uppercase text-gray-400 font-black tracking-widest">
                   <tr>
-                    <th className="px-6 py-4">Rank</th>
-                    <th className="px-6 py-4">Student</th>
-                    <th className="px-6 py-4 hidden sm:table-cell">Group</th>
-                    <th className="px-6 py-4 text-right">Mastery</th>
+                    <th className="px-6 py-4">Tangga</th>
+                    <th className="px-6 py-4">Pelajar</th>
+                    <th className="px-6 py-4 hidden sm:table-cell">Kumpulan</th>
+                    <th className="px-6 py-4 text-right">Penguasaan</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
@@ -131,7 +132,7 @@ const Home: React.FC<HomeProps> = ({ setGameState, userProfile, mistakeCount }) 
                         <div className="flex flex-col">
                           <span className="font-bold text-gray-800 text-sm">
                             {entry.name || 'Anonymous'}
-                            {entry.name === userProfile.name && <span className="ml-2 text-[10px] text-red-600 font-black">YOU</span>}
+                            {entry.name === userProfile.name && <span className="ml-2 text-[10px] text-red-600 font-black">ANDA</span>}
                           </span>
                           <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-md mt-1 sm:hidden w-fit ${getGroupColor(entry.group)}`}>
                             {entry.group}

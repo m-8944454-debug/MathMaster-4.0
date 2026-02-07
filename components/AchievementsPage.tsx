@@ -18,7 +18,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
         percentage: Math.min((current / badge.goalValue) * 100, 100)
       };
     }
-    // Special case for daily goals
+    // Kes khas untuk matlamat harian
     if (badge.id === 'devotion' && badge.goalValue) {
       const current = profile.dailyGoalTotalCount || 0;
       return {
@@ -37,9 +37,9 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
     <div className="max-w-5xl mx-auto py-6 animate-in fade-in duration-700">
       <div className="text-center mb-16">
         <div className="inline-block bg-indigo-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] mb-4 shadow-lg">
-          Hall of Mathematical Excellence
+          Dewan Kecemerlangan Matematik
         </div>
-        <h2 className="text-5xl font-black text-gray-900 mb-4 tracking-tighter uppercase">Group Badges</h2>
+        <h2 className="text-5xl font-black text-gray-900 mb-4 tracking-tighter uppercase">Lencana Kumpulan</h2>
         <div className="flex items-center justify-center gap-4">
           <div className="h-1.5 w-48 bg-gray-100 rounded-full overflow-hidden">
             <div 
@@ -47,7 +47,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
               style={{ width: `${(unlockedCount / totalCount) * 100}%` }}
             ></div>
           </div>
-          <span className="text-sm font-black text-gray-400">{unlockedCount} / {totalCount} UNLOCKED</span>
+          <span className="text-sm font-black text-gray-400">{unlockedCount} / {totalCount} TERBUKA</span>
         </div>
       </div>
 
@@ -83,14 +83,14 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
               {isUnlocked ? (
                 <div className="flex items-center gap-2">
                   <span className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-[10px] text-white">✓</span>
-                  <span className="text-[10px] font-black text-green-600 uppercase tracking-widest">Achieved</span>
+                  <span className="text-[10px] font-black text-green-600 uppercase tracking-widest">Telah Dicapai</span>
                 </div>
               ) : (
                 <div>
                    {progress ? (
                      <div className="space-y-2">
                         <div className="flex justify-between text-[9px] font-black text-gray-400 uppercase tracking-widest">
-                          <span>Progress</span>
+                          <span>Kemajuan</span>
                           <span>{progress.current} / {progress.goal}</span>
                         </div>
                         <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
@@ -101,12 +101,12 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
                         </div>
                      </div>
                    ) : (
-                     <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest">Locked</span>
+                     <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest">Terkunci</span>
                    )}
                 </div>
               )}
 
-              {/* Shine Effect */}
+              {/* Kesan Cahaya */}
               {isUnlocked && (
                 <div className="absolute top-0 right-0 p-4">
                   <div className="text-amber-400 animate-pulse">✨</div>
@@ -117,7 +117,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
         })}
       </div>
 
-      {/* Detail Overlay */}
+      {/* Paparan Terperinci */}
       {selectedBadge && (
         <div 
           className="fixed inset-0 bg-black/60 backdrop-blur-md z-[100] flex items-center justify-center p-6"
@@ -140,11 +140,11 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
 
             <div className="grid grid-cols-2 gap-6 mb-10">
               <div className="bg-gray-50 p-6 rounded-[2rem] border border-gray-100">
-                <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-2">Requirement</span>
+                <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest block mb-2">Keperluan</span>
                 <p className="font-black text-gray-800 text-sm leading-snug">{selectedBadge.criteria}</p>
               </div>
               <div className="bg-indigo-50 p-6 rounded-[2rem] border border-indigo-100">
-                <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest block mb-2">Impact</span>
+                <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest block mb-2">Impak</span>
                 <p className="font-bold text-indigo-700 text-sm italic leading-snug">{selectedBadge.practicalImpact}</p>
               </div>
             </div>
@@ -153,28 +153,28 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ profile }) => {
               onClick={() => setSelectedBadge(null)}
               className="w-full py-5 bg-gray-900 text-white font-black rounded-2xl hover:bg-black transition-all shadow-xl uppercase tracking-[0.2em] text-xs"
             >
-              Close Record
+              Tutup Rekod
             </button>
           </div>
         </div>
       )}
 
-      {/* Bottom CTA */}
+      {/* Bahagian CTA Bawah */}
       <div className="mt-24 p-12 bg-gray-900 rounded-[3rem] text-center text-white relative overflow-hidden group">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500 via-transparent to-transparent group-hover:scale-150 transition-transform duration-1000"></div>
-        <h3 className="text-3xl font-black mb-4 uppercase tracking-tighter">Become a Mathematical Expert</h3>
+        <h3 className="text-3xl font-black mb-4 uppercase tracking-tighter">Menjadi Pakar Matematik</h3>
         <p className="text-gray-400 max-w-xl mx-auto font-medium mb-8">
-          The path to mastery is continuous. Every solved problem is a step toward expert-level understanding.
+          Jalan menuju kepakaran adalah berterusan. Setiap soalan yang diselesaikan adalah langkah ke arah pemahaman peringkat pakar.
         </p>
         <div className="flex justify-center gap-12">
            <div className="text-center">
              <div className="text-3xl font-black text-indigo-400 mb-1">{profile.correctAnswers}</div>
-             <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Correct Answers</div>
+             <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Jawapan Betul</div>
            </div>
            <div className="w-px h-12 bg-gray-800"></div>
            <div className="text-center">
              <div className="text-3xl font-black text-amber-400 mb-1">{profile.unlockedBadges.length}</div>
-             <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Medals Earned</div>
+             <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Pingat Diraih</div>
            </div>
         </div>
       </div>

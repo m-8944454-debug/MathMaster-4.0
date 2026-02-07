@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathMaster - Practice, Gain Points, Redeem Awards</title>
+    <title>MathMaster - Latihan, Kumpul Mata, Tebus Ganjaran</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
@@ -17,23 +18,55 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
+            color: #1e293b; /* Ensure default text color is dark slate */
         }
         .katex-display {
             margin: 1em 0;
             overflow-x: auto;
             overflow-y: hidden;
             padding: 0.5em 0;
+            color: inherit;
         }
         .katex {
             font-size: 1.05em;
+            color: #0f172a; /* Force dark color for math for maximum legibility */
         }
         /* Custom scrollbar for math formulas */
         .katex-display::-webkit-scrollbar {
             height: 4px;
         }
         .katex-display::-webkit-scrollbar-thumb {
-            background: #e2e8f0;
+            background: #cbd5e1;
             border-radius: 10px;
+        }
+
+        /* Animation for point increase */
+        @keyframes float-up {
+            0% { opacity: 0; transform: translateY(0); }
+            20% { opacity: 1; transform: translateY(-10px); }
+            80% { opacity: 1; transform: translateY(-20px); }
+            100% { opacity: 0; transform: translateY(-30px); }
+        }
+        .animate-float-up {
+            animation: float-up 1s ease-out forwards;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .animate-pop {
+            animation: pop 0.3s ease-out;
+        }
+        
+        /* Hide scrollbars but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 <script type="importmap">
@@ -49,6 +82,5 @@
 </head>
 <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

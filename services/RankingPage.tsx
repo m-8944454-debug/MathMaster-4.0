@@ -6,6 +6,7 @@ interface RankingPageProps {
   userProfile: Profile;
 }
 
+// 模拟种子数据：当注册表为空时展示
 const SEED_COMPETITORS = [
   { name: 'Min Er (KMM)', group: 'Alpha Integrals', avatar: AVATARS[1], correct: 45, total: 50 },
   { name: 'Siva', group: 'Vector Vanguards', avatar: AVATARS[3], correct: 38, total: 42 },
@@ -16,6 +17,7 @@ const RankingPage: React.FC<RankingPageProps> = ({ userProfile }) => {
   const [view, setView] = useState<'global' | 'group'>('global');
   const [lastSync, setLastSync] = useState(Date.now());
 
+  // 监听 storage 事件，当其他“用户”（标签页）数据改变时刷新视图
   useEffect(() => {
     const handleSync = () => setLastSync(Date.now());
     window.addEventListener('storage', handleSync);
@@ -26,6 +28,7 @@ const RankingPage: React.FC<RankingPageProps> = ({ userProfile }) => {
     const registryRaw = localStorage.getItem('math_public_registry');
     let registry = registryRaw ? JSON.parse(registryRaw) : [];
 
+    // 如果名录太少，加入种子数据增加气氛
     if (registry.length < 5) {
       SEED_COMPETITORS.forEach(seed => {
         if (!registry.find((u: any) => u.name === seed.name)) {
@@ -34,6 +37,7 @@ const RankingPage: React.FC<RankingPageProps> = ({ userProfile }) => {
       });
     }
 
+    // 强制加入/更新当前用户，防止本地 profile 尚未写入 registry
     const meEntry = {
       name: userProfile.name || 'Pelajar Baru',
       group: userProfile.group,
@@ -47,10 +51,12 @@ const RankingPage: React.FC<RankingPageProps> = ({ userProfile }) => {
     if (meIdx >= 0) registry[meIdx] = { ...registry[meIdx], ...meEntry };
     else registry.push(meEntry);
 
+    // 过滤
     if (view === 'group' && userProfile.group !== 'Tiada') {
       registry = registry.filter((u: any) => u.group === userProfile.group);
     }
 
+    // 排序：正确数优先，然后是准确率
     return registry.sort((a: any, b: any) => {
       if (b.correct !== a.correct) return b.correct - a.correct;
       const accA = a.total > 0 ? a.correct / a.total : 0;

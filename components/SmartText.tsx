@@ -1,9 +1,11 @@
+
 import React, { useMemo } from 'react';
 
 interface SmartTextProps {
   text: string;
   className?: string;
-  as?: 'div' | 'span' | 'p' | 'h2';
+  // Added more heading levels to support various UI requirements
+  as?: 'div' | 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 /**

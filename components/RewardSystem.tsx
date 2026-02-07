@@ -38,12 +38,12 @@ const RewardSystem: React.FC<RewardSystemProps> = ({
     <div className="space-y-8">
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900">Your Awards</h2>
-          <p className="text-gray-500">Earn points to treat yourself!</p>
+          <h2 className="text-3xl font-bold text-gray-900">Ganjaran Anda</h2>
+          <p className="text-gray-500">Kumpul mata untuk tebus hadiah pilihan anda!</p>
         </div>
         <button 
           onClick={() => setShowAdd(!showAdd)}
-          className="bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl hover:bg-indigo-700 transition-all"
+          className="bg-red-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl hover:bg-red-700 transition-all"
         >
           {showAdd ? (
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,33 +59,33 @@ const RewardSystem: React.FC<RewardSystemProps> = ({
 
       {showAdd && (
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl border shadow-sm space-y-4 animate-in fade-in slide-in-from-top-4">
-          <h3 className="font-bold text-lg text-gray-800">Set a New Goal</h3>
+          <h3 className="font-bold text-lg text-gray-800">Matlamat Ganjaran Baru</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Award Name</label>
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Nama Ganjaran</label>
               <input 
                 type="text" 
                 value={name}
                 onChange={e => setName(e.target.value)}
-                placeholder="e.g. Haidilao Dinner, 1 Hour Gaming"
-                className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 transition-all outline-none"
+                placeholder="cth: Makan Haidilao, Main Game 1 Jam"
+                className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-100 focus:border-red-600 transition-all outline-none"
                 required
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Points Cost</label>
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Kos Mata</label>
               <input 
                 type="number" 
                 value={cost}
                 onChange={e => setCost(e.target.value)}
-                className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-100 focus:border-indigo-600 transition-all outline-none"
+                className="w-full p-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-100 focus:border-red-600 transition-all outline-none"
                 required
                 min="10"
               />
             </div>
           </div>
-          <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition-colors">
-            Create Award Goal
+          <button type="submit" className="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition-colors">
+            Cipta Matlamat
           </button>
         </form>
       )}
@@ -93,8 +93,8 @@ const RewardSystem: React.FC<RewardSystemProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {activeRewards.length === 0 && !showAdd && (
           <div className="col-span-full py-12 text-center bg-gray-50 rounded-3xl border border-dashed border-gray-300">
-            <p className="text-gray-500 font-medium">No active awards yet. Add your first goal!</p>
-            <p className="text-gray-400 text-sm mt-1 italic">"The reward for work well done is the opportunity to do more."</p>
+            <p className="text-gray-500 font-medium">Tiada ganjaran aktif. Tambah matlamat pertama anda!</p>
+            <p className="text-gray-400 text-sm mt-1 italic">"Ganjaran untuk kerja keras adalah kepuasan diri."</p>
           </div>
         )}
         
@@ -117,15 +117,15 @@ const RewardSystem: React.FC<RewardSystemProps> = ({
               </div>
 
               <div className="flex items-center justify-between text-sm mb-2">
-                <span className="text-gray-500 font-medium">{points} / {reward.pointsNeeded} pts</span>
-                <span className={`font-bold ${progress === 100 ? 'text-green-600' : 'text-indigo-600'}`}>
+                <span className="text-gray-500 font-medium">{points} / {reward.pointsNeeded} mata</span>
+                <span className={`font-bold ${progress === 100 ? 'text-green-600' : 'text-red-600'}`}>
                   {Math.round(progress)}%
                 </span>
               </div>
               
               <div className="h-3 bg-gray-100 rounded-full overflow-hidden mb-6">
                 <div 
-                  className={`h-full transition-all duration-1000 ${progress === 100 ? 'bg-green-500' : 'bg-indigo-600'}`}
+                  className={`h-full transition-all duration-1000 ${progress === 100 ? 'bg-green-500' : 'bg-red-600'}`}
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
@@ -140,7 +140,7 @@ const RewardSystem: React.FC<RewardSystemProps> = ({
                   }
                 `}
               >
-                {canRedeem ? 'Redeem Now!' : 'Keep Practicing'}
+                {canRedeem ? 'Tebus Sekarang!' : 'Teruskan Latihan'}
               </button>
             </div>
           );
@@ -149,7 +149,7 @@ const RewardSystem: React.FC<RewardSystemProps> = ({
 
       {redeemedRewards.length > 0 && (
         <div className="mt-12">
-          <h3 className="text-lg font-bold text-gray-500 uppercase tracking-widest mb-4">Completed Goals</h3>
+          <h3 className="text-lg font-bold text-gray-500 uppercase tracking-widest mb-4">Ganjaran Telah Ditebus</h3>
           <div className="space-y-3">
             {redeemedRewards.map(reward => (
               <div key={reward.id} className="bg-gray-50 px-6 py-4 rounded-xl border border-dashed flex items-center justify-between opacity-70">
@@ -161,7 +161,7 @@ const RewardSystem: React.FC<RewardSystemProps> = ({
                   </div>
                   <span className="font-medium text-gray-600 line-through">{reward.name}</span>
                 </div>
-                <span className="text-xs font-bold text-gray-400">Redeemed on {new Date(reward.createdAt).toLocaleDateString()}</span>
+                <span className="text-xs font-bold text-gray-400">Ditebus pada {new Date(reward.createdAt).toLocaleDateString('ms-MY')}</span>
               </div>
             ))}
           </div>
